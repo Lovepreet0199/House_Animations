@@ -1,0 +1,1248 @@
+/* ========================BODY STYLES======================== */
+/* Basic page styles: margin reset, background, font color, text alignment */
+body {
+    margin: 0;
+    background-color: azure;
+    color: rgb(116, 64, 64);
+    text-align: center;
+    /* font-family: 'Courier New', Courier, monospace; */
+}
+
+/* ========================HEADING======================== */
+/*Styles for main heading*/
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 62px;
+    padding: 10px 0;
+    margin: 0;
+    background-color: #41414110;
+}
+
+/* ========================NAVIGATION======================== */
+/* Navigation bar list style */
+ul {
+    list-style: none;
+}
+
+/* Main nav container layout */
+#main-nav {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #41414110;
+    margin: 0;
+    padding: 10px 0;
+}
+
+/* ========================LINKS IN NAVIGATION======================== */
+/* Links styling */
+a {
+    font-family: 'poppins', sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    color: rgb(116, 64, 64);
+}
+
+/* ========================LINKS ON HOVER======================== */
+/* Link hover effect */
+a:hover {
+    color: rgb(201, 157, 157);
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================Skip to Main Content======================== */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    /*Hide off screen */
+    left: 0;
+}
+
+.skip-link:focus {
+    top: 0;
+    /*Slide into view when focused*/
+}
+
+/* ========================RESET BUTTON======================== */
+/* Styles for reset button  */
+#resetButton {
+    font-family: 'poppins', sans-serif;
+    font-size: 20px;
+    background-color: transparent;
+    border: none;
+    color: rgb(116, 64, 64);
+    padding: 0;
+    cursor: pointer;
+}
+
+/* ========================HERO SECTION======================== */
+/* Hero section container and paragraph styles */
+.hero-container {
+    margin: 30px 0 30px 0;
+}
+
+.hero-container p {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 22px;
+    margin: 10px 0 0 0;
+}
+
+/* ========================RACE BUTTONS======================== */
+#startRace,
+#resetRace {
+    font-family: 'poppins', sans-serif;
+    font-size: 20px;
+    background-color: #7B4955;
+    color: #F4EDDB;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.raceButtonContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+}
+
+/* ========================MAIN DESIGN======================== */
+/* Scale down the entire scene to fit the page */
+.main-design {
+    transform: scale(0.6);
+    /*Shrink scene to 60% of original*/
+    transform-origin: center;
+    /*Scale from center of the container*/
+}
+
+/* ========================SCENE======================== */
+/*Prespective gives 3D depth to the scene*/
+.scene {
+    width: 800px;
+    height: 500px;
+    margin: 40px auto;
+    perspective: 1200px;
+    /*Larger values give shallower 3D effect*/
+}
+
+/* ========================ROOM======================== */
+/*3D room container setup for all 3D children*/
+.room {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    /*Maintain 3D transforms for children*/
+    transform: rotateX(1deg) rotateY(0deg);
+    /*Slight rotation for 3D purposes*/
+}
+
+/*The ::after pseudo element used it adds a gradient that simulates depth like a spotlight effect on walls*/
+.room::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 20%, rgba(255, 255, 200, 0.25), rgba(0, 0, 0, 0.5));
+    pointer-events: none;
+}
+
+/* ========================WALLS======================== */
+.wallBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #f5e6c8;
+    /*Wall color*/
+}
+
+.wallLeft {
+    position: absolute;
+    width: 400px;
+    height: 100%;
+    left: -400px;
+    background: #e0d2b0;
+    transform-origin: right;
+    /*Rotate around right edge*/
+    transform: rotateY(90deg);
+    /*Make left wall perpendicular*/
+}
+
+.wallRight {
+    position: absolute;
+    width: 400px;
+    height: 100%;
+    right: -400px;
+    background: #d6c4a0;
+    transform-origin: left;
+    /*Rotate around left edge*/
+    transform: rotateY(-90deg);
+    /*Make right wall perpendicular*/
+}
+
+/* ========================FLOOR AND ROOF======================== */
+.floor {
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    bottom: -400px;
+    background: #7a4a25;
+    transform-origin: top;
+    /*Rotate floor from top edge*/
+    transform: rotateX(90deg);
+    /*Horizontal floor plane*/
+
+}
+
+.roof {
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    top: -400px;
+
+    background-color: #5a3a1a;
+
+    transform-origin: bottom;
+    /*Rotate roof from bottom*/
+    transform: rotateX(-90deg);
+    /*Horizontal roof plane*/
+
+    box-shadow: inset 0 -20px 40px rgba(0, 0, 0, 0.3);
+    /*Soft interior shadow*/
+}
+
+/* ========================LANTERNS======================== */
+/*Grid layout for lanterns*/
+.lanternGrid {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: 40px;
+    justify-items: center;
+
+    transform: translateZ(50px);
+}
+
+/*Design for each Lantern*/
+.lantern {
+    width: 18px;
+    height: 28px;
+
+    background-color: orange;
+    border-radius: 4px;
+
+    box-shadow: 0 0 15px rgba(255, 180, 80, 0.6);
+    /*Glow effect*/
+
+    position: relative;
+
+
+    animation: flicker 2s infinite alternate;
+    /*Animation for lanterns that makes it flicker*/
+}
+
+/*Using pseudo element ::before for light hanging pole for lanterns*/
+.lantern::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 2px;
+    height: 22px;
+    background: #3b2a1a;
+}
+
+/*Using pseudo element ::after to give glow to lanterns*/
+.lantern::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 40px;
+    height: 40px;
+
+    transform: translate(-50%, -50%);
+
+    background: radial-gradient(circle, rgba(255, 200, 100, 0.6), transparent 70%);
+
+    filter: blur(6px);
+}
+
+/*Flicker Animation Effect Keyframes*/
+@keyframes flicker {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+}
+
+/* ========================CLOCK======================== */
+/*Clock body*/
+.clockMain {
+    /*Positioning clock on back wall*/
+    position: absolute;
+    top: 100px;
+    left: 130px;
+    width: 60px;
+    height: 80px;
+    background: #8d7d7d;
+    border-radius: 8px;
+    /*Smooth scaling when hovered*/
+    transition: transform 1s ease;
+}
+
+/*Dial for clock*/
+.dial {
+    position: absolute;
+    inset: 2px;
+    border-radius: 10px;
+    border: 2px solid #504343;
+}
+
+/* Clock hands [hour, minute and second] */
+.handHour,
+.handMinute,
+.handSecond {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    /* Centers hands and sets rotation to pivot from center */
+    transform-origin: bottom center;
+    transform: translateX(-50%);
+}
+
+
+/*Dimensions for hour hand and  very slow rotation [12hrs]*/
+.handHour {
+    position: absolute;
+    width: 4px;
+    height: 14px;
+    background: black;
+    animation: hourSpin 43200s linear infinite;
+    animation-delay: -36000s;
+    /*Delayed cuz set the hour hand to 10am*/
+}
+
+/*Dimensions for minute hand*/
+.handMinute {
+    width: 3px;
+    height: 21px;
+    background: black;
+    animation: minuteSpin 3600s linear infinite;
+    animation-delay: -600s;
+    /*Delays cuz minute hand is set to 10 */
+}
+
+/*Dimensions for seconds hand*/
+.handSecond {
+    width: 3px;
+    height: 25px;
+    background: rgb(109, 106, 106);
+    animation: secondSpin 60s linear infinite;
+}
+
+/* Key frames for hour hand */
+@keyframes hourSpin {
+    0% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+/*Key frames for minute hand*/
+@keyframes minuteSpin {
+    0% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+/*Key frames for seconds hand*/
+@keyframes secondSpin {
+    0% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+/*Hovering effect for clock scaling*/
+.clockMain:hover {
+    transform: scale(1.3);
+}
+
+/*Pendulum for clock at bottom*/
+.pendulum {
+    position: absolute;
+    bottom: -40px;
+    right: 30px;
+    width: 4px;
+    height: 40px;
+    background-color: rgb(94, 90, 83);
+    margin: auto;
+    transform-origin: top;
+    /*Animation start point*/
+    animation: swing 1.5s infinite alternate ease-out;
+    /*Swing animation for always keeping pendulum running*/
+}
+
+/*Animation keyframes for pendulum*/
+@keyframes swing {
+    0% {
+        transform: rotate(-30deg);
+    }
+
+    50% {
+        transform: rotate(-0deg);
+    }
+
+    100% {
+        transform: rotate(30deg);
+
+    }
+}
+
+/* ========================WINDOW======================== */
+/*Positioning window on right wall*/
+.windowRight {
+    position: absolute;
+    right: 80px;
+    top: 150px;
+    width: 200px;
+    height: 200px;
+    background: rgb(151, 189, 204);
+    border: 5px solid white;
+    /*Smooth transition for background change (day/night)*/
+    transition: all 0.5s ease;
+}
+
+/*Dark background for night mode*/
+.night .windowRight {
+    background: #0b1a3a;
+}
+
+/*Creates stars using radial gradient ovelay*/
+.night .windowRight::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: radial-gradient(circle, white 1px, transparent 1.5px);
+    background-size: 20px 20px;
+
+    opacity: 0.4;
+}
+
+/* ========================WINDOW FRAME======================== */
+/*Horizontal & Vertical frame bars inside windows*/
+.windowFrame1 {
+    position: absolute;
+    top: 65px;
+    width: 200px;
+    height: 7px;
+    background-color: white;
+}
+
+.windowFrame2 {
+    position: absolute;
+    top: 130px;
+    width: 200px;
+    height: 7px;
+    background-color: white;
+}
+
+.windowFrame3 {
+    position: absolute;
+    right: 65px;
+    width: 7px;
+    height: 200px;
+    background-color: white;
+}
+
+.windowFrame4 {
+    position: absolute;
+    right: 130px;
+    width: 7px;
+    height: 200px;
+    background-color: white;
+}
+
+/* ========================TABLE============================== */
+/*Table top positioning, size and color*/
+.table {
+    position: absolute;
+    bottom: 80px;
+    left: 100px;
+    width: 120px;
+    height: 30px;
+    background: #5c3a1e;
+    border-radius: 6px;
+    transform: translateZ(10px);
+}
+
+/*Table legs positioning, size and color*/
+#tableLeg1 {
+    content: "";
+    position: absolute;
+    bottom: -80px;
+    left: 5px;
+    width: 10px;
+    height: 80px;
+    background: #3e2614;
+}
+
+#tableLeg2 {
+    content: "";
+    position: absolute;
+    bottom: -80px;
+    left: 105px;
+    width: 10px;
+    height: 80px;
+    background: #3e2614;
+}
+
+/*Using pseudo element ::before to create a shadow effect underneath the table for depth*/
+.table::before {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 10%;
+    width: 80%;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    filter: blur(4px);
+}
+
+/* ===========================LAMP===================== */
+/*Lamp stand positioning , size and color*/
+.lamp {
+    position: absolute;
+    bottom: 30px;
+    left: 55px;
+
+    width: 10px;
+    height: 90px;
+    background: #444;
+}
+
+/*Lamp shade positioning, size and color*/
+.lampShade {
+    position: absolute;
+    top: -25px;
+    left: -22px;
+
+    width: 55px;
+    height: 55px;
+
+    background: #ddd;
+    border-radius: 5px;
+    transform-origin: left top;
+    /*For the hover effect to execute from left top corner*/
+    transition: transform 0.3s ease;
+    /*Smooth hover rotation effect*/
+}
+
+/*Light on effect for lamp*/
+.lampOn {
+    background: rgba(233, 233, 180, 1);
+}
+
+/*Lamp falling effect*/
+.lampShade:hover {
+    transform: rotate(5deg);
+}
+
+/*Light beam effect from lamp, initially hidden*/
+/* .lampShade::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 180px;
+    height: 140px;
+
+    background: radial-gradient(ellipse at center,
+            rgba(233, 233, 180, 0.5) 0%,
+            rgba(207, 207, 174, 0.3) 40%,
+            rgba(255, 255, 100, 0.1) 70%,
+            transparent 100%);
+
+    filter: blur(8px);
+    opacity: 0;
+    transition: 0.3s;
+} */
+
+
+/* ===========================PICTURE FRAME===================== */
+/*Ensure my image fits the frame perfectly*/
+.pictureFrame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*Frame positioning, size & border*/
+.pictureFrame {
+    position: absolute;
+    right: 120px;
+    top: 150px;
+    width: 200px;
+    height: 200px;
+    border: 5px solid #222;
+
+    transform-origin: top left;
+    /*Transform from left top corner to give falling effect*/
+    transition: transform 0.5s ease;
+    /*Smooth hover rotation effect*/
+}
+
+/*Hover effect*/
+.pictureFrame:hover {
+    transform: rotate(15deg);
+
+}
+
+/* ===========================CATS===================== */
+/*Static cat with sprite sheet animation*/
+.cat {
+    position: absolute;
+    bottom: -10px;
+    right: 610px;
+
+    width: 80px;
+    height: 64px;
+
+    background: url("../assets/attack1.png") no-repeat;
+    /*REFERENCE SPRITE SHEET: https://xzany.itch.io/cat-2d-pixel-art */
+    background-size: 640px 64px;
+
+    transform: translateZ(40px);
+
+    animation: catAnimation 1s steps(8) infinite;
+}
+
+/*Steps animations for cat sprite frames*/
+@keyframes catAnimation {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -640px 0;
+    }
+}
+
+/* ---------------------------------CAT RUNNING------------------------------------- */
+/*Running cat sprite, positions & 3D depth*/
+.catRunning {
+    position: absolute;
+    bottom: -10px;
+    right: 50px;
+
+    width: 80px;
+    height: 64px;
+
+    background: url("../assets/run.png") no-repeat;
+    /*REFERENCE SPRITE SHEET: https://xzany.itch.io/cat-2d-pixel-art */
+    background-size: 640px 64px;
+
+    transform: translateZ(150px);
+    /*commented out the animation as using JavaScript to add this when race starts*/
+    /* animation: runCatAnimation 2s steps(7) infinite, runAnimation 5s infinite; */
+}
+
+/*Moving cat sprite sheet across the room*/
+@keyframes runCatAnimation {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -560px 0;
+    }
+}
+
+
+/* ---------------------------------CAT RUN JUMP------------------------------------- */
+/*Running and Jumping car sprite, position, depth*/
+.catRunJump {
+    position: absolute;
+    bottom: -10px;
+    right: 50px;
+
+    width: 80px;
+    height: 64px;
+
+    background: url("../assets/runningjump.png") no-repeat;
+    /*REFERENCE SPRITE SHEET: https://xzany.itch.io/cat-2d-pixel-art */
+    background-size: 240px 64px;
+
+    transform: translateZ(300px);
+
+    /* animation: jumpAnimation 1s steps(3) infinite, runAnimation 5s infinite; */
+}
+
+/*Steps animation for jumping sprite cat*/
+@keyframes jumpAnimation {
+    0% {
+        background-position: 0 0;
+    }
+
+    100% {
+        background-position: -240px 0;
+    }
+}
+
+/*Animation for running cat*/
+@keyframes runAnimation {
+    0% {
+        right: 50px;
+    }
+
+    100% {
+        right: 380px;
+    }
+}
+
+/*Animation class for the cats to race for JS*/
+.runningCat1 {
+    animation: runCatAnimation 2s steps(7) infinite, runAnimation 4s infinite;
+}
+
+.jumpingCat2 {
+    animation: jumpAnimation 1s steps(3) infinite, runAnimation 4s infinite;
+}
+
+/* ===========================BOOKSHELF===================== */
+/*Book shelf container, color, height, size*/
+.bookShelf {
+    position: absolute;
+    right: 150px;
+    bottom: 150px;
+    width: 200px;
+    height: 200px;
+
+    background: #6b4226;
+    border: 4px solid #5a3a1a;
+    border-radius: 6px;
+
+    transform: translateZ(20px);
+    /*Flex layout for shelf*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /*Shadow effect for shelf*/
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/*So the book word blends with shelves color*/
+#textBookShelf {
+    color: #8b5a2b;
+}
+
+/*Individual Shelves, color, height, flex layout for books*/
+.shelf1,
+.shelf2,
+.shelf3 {
+    height: 40px;
+    background-color: #8b5a2b;
+    border-radius: 4px;
+
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    padding: 4px;
+}
+
+/* ===========================BOOKS===================== */
+/*Individual books positioning, size, color, rounded edges*/
+.book1 {
+    position: relative;
+    width: 14px;
+    height: 30px;
+    background: #c94c4c;
+    border-radius: 2px;
+
+    transition: transform 0.3s ease;
+    /*Smooth transformations*/
+}
+
+/*Changed color for second book*/
+.book2 {
+    position: relative;
+    width: 14px;
+    height: 33px;
+    background: #4c6cc9;
+
+    border-radius: 2px;
+
+    transition: transform 0.3s ease;
+}
+
+/*Slightly tall book than other two*/
+.bookTall {
+    position: relative;
+    width: 14px;
+    height: 40px;
+    border-radius: 2px;
+    background: #4cc96b;
+    transition: transform 0.3s ease;
+}
+
+/*Decorative stripes to simulate books*/
+.book1::before,
+.book2::before,
+.bookTall::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 4px;
+    width: 2px;
+    height: 80%;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/*Slight tilt & scale on hover*/
+.book1:hover {
+    transform: rotate(-13deg) scale(1.1);
+}
+
+.book2:hover {
+    transform: rotate(13deg) scale(1.2);
+}
+
+/*Adding shadow effect for shelf*/
+.bookShelf::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 10%;
+    width: 80%;
+    height: 10px;
+
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    filter: blur(4px);
+}
+
+/* Swing animation for the tall book */
+.bookTall {
+    animation: bookAnimation 5s infinite ease;
+    transform-origin: center bottom;
+}
+
+/*Key frames for tall book animation*/
+/*Side to side swing*/
+@keyframes bookAnimation {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    30% {
+        transform: rotateZ(5deg);
+    }
+
+    60% {
+        transform: rotateZ(0deg);
+    }
+
+    80% {
+        transform: rotateZ(-5deg);
+    }
+
+    100% {
+        transform: rotateZ(0deg);
+
+    }
+}
+
+/* ===========================BOOKS FALL===================== */
+/*Animations for falling books, rotation from bottom*/
+.fall {
+    animation: fallAnimation 2s forwards ease-in;
+    transform-origin: bottom center;
+}
+
+/*Animations for standing books once fallen*/
+.standup {
+    animation: standup 2s forwards ease-out;
+    transform-origin: bottom center;
+}
+
+/*Rotates books to simulate falling effect*/
+@keyframes fallAnimation {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    40% {
+        transform: rotateZ(15deg) translateY(-3px);
+    }
+
+    100% {
+        transform: rotateZ(90deg);
+    }
+}
+
+/*Rotates books to simulate standing effect*/
+@keyframes standup {
+    0% {
+        transform: rotateZ(90deg);
+    }
+
+    100% {
+        transform: rotateZ(0deg);
+    }
+}
+
+/*Handles alternate falling and standing animation for books*/
+.fall2 {
+    animation: fallAnimation2 2s forwards ease-in;
+    transform-origin: bottom center;
+}
+
+.standup2 {
+    animation: standup2 2s forwards ease-out;
+    transform-origin: bottom center;
+}
+
+@keyframes fallAnimation2 {
+    0% {
+        transform: rotateZ(0deg);
+    }
+
+    40% {
+        transform: rotateZ(-15deg);
+    }
+
+
+    100% {
+        transform: rotateZ(-90deg);
+    }
+}
+
+@keyframes standup2 {
+    0% {
+        transform: rotateZ(-90deg);
+    }
+
+    100% {
+        transform: rotateZ(0deg);
+    }
+}
+
+/* ========================================== CAMERA ================================== */
+/*Main container for camera with 3D transform preserved*/
+.cameraSetup {
+    position: absolute;
+    bottom: 0;
+    left: 350px;
+
+    transform-style: preserve-3d;
+
+    animation: camAnimation 4s infinite ease-in-out;
+    /*Animation rotates camera slightly along y-axis */
+}
+
+/*Camera main body styling*/
+.cameraBody {
+    width: 90px;
+    height: 55px;
+    background-color: #2b2b2b;
+    border-radius: 8px;
+
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/*Camera Lens styling & positioning*/
+.lens {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #111, #444);
+    top: 15px;
+    left: -12px;
+    border: 2px solid #666;
+}
+
+/*Camera view finder styling and positioning*/
+.viewfinder {
+    position: absolute;
+    width: 15px;
+    height: 10px;
+    background: #444;
+    top: 8px;
+    right: 10px;
+    border-radius: 2px;
+}
+
+/*Container for Tripod legs*/
+.tripod {
+    position: relative;
+    height: 60px;
+}
+
+/*Tripod legs size and color*/
+.leg1,
+.leg2,
+.leg3 {
+    position: absolute;
+    width: 4px;
+    height: 70px;
+    background: #444;
+    transform-origin: top;
+}
+
+/*Positioning legs individually*/
+.leg1 {
+    left: 39px;
+    transform: rotate(25deg);
+}
+
+.leg2 {
+    left: 43px;
+    transform: rotate(0deg);
+}
+
+.leg3 {
+    right: 39px;
+    transform: rotate(-25deg);
+}
+
+/*Animation keyframes for subtle camera rotation*/
+@keyframes camAnimation {
+    0% {
+        transform: translateZ(370px) rotateY(0deg);
+    }
+
+    50% {
+        transform: translateZ(370px) rotateY(1deg);
+    }
+
+    100% {
+        transform: translateZ(370px) rotateY(0deg);
+    }
+}
+
+/*Soft shadow effect underneath camera for that 3D look*/
+.cameraSetup::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100px;
+    height: 12px;
+
+    background: rgba(0, 0, 0, 0.35);
+    filter: blur(6px);
+    border-radius: 50%;
+}
+
+/* ===========================FLASH===================== */
+/*White overlay to give that flash effect*/
+.flash {
+    position: fixed;
+    inset: 0;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* ===========================SNAPSHOT===================== */
+/*Main photo frame for snapshot*/
+.snapShot {
+    width: 800px;
+    height: 500px;
+    transform: scale(1);
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    border: 10px solid white;
+    background: #000;
+    overflow: hidden;
+}
+
+/* ===========================PAUSING ANIMATIONS===================== */
+/*Stops all animations and removes transitions when paused*/
+.paused,
+.paused * {
+    animation-play-state: paused;
+    transition: none;
+}
+
+/* ===========================HIDING CAMERA===================== */
+/*Hides camera from view using visibility hidden*/
+.cameraHidden {
+    visibility: hidden;
+}
+
+/* ===========================REMOVING HOVER EFFECTS===================== */
+.paused .book1:hover,
+.paused .book2:hover,
+.paused .bookTall:hover,
+.paused .lamp:hover,
+.paused .lampShade:hover,
+.paused .clockMain:hover,
+.paused .pictureFrame:hover,
+.paused .windowRight:hover,
+.paused .cameraSetup:hover {
+    transform: none;
+    transition: none;
+}
+
+/* ===========================HIDDEN CLASS===================== */
+.hidden {
+    /* visibility: hidden; */
+    display: none;
+    opacity: 0;
+    position: absolute;
+}
+
+/* ===========================FOOTER===================== */
+#footer {
+    margin-top: 50px;
+}
+
+/*======================RULES FILE=========================*/
+/*Contains rules section, flex for layout*/
+.rules-container {
+    display: flex;
+    justify-content: space-evenly;
+    border-top: 10px solid rgb(116, 64, 64);
+    border-bottom: 10px solid rgb(116, 64, 64);
+    padding-top: 25px;
+    padding-bottom: 25px;
+    opacity: 0;
+    animation: fadeUp 1s forwards ease;
+}
+
+#heading-rules {
+    animation: fadeUp 1s forwards ease;
+}
+
+/*KeyFrames for that fade effect */
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#box-1,
+#box-2 {
+    flex: 1 1 0;
+    padding-right: 10px;
+    padding-left: 5px;
+}
+
+/*Styling paragraphs inside Rules*/
+.Rules p {
+    padding: 0;
+    margin: 0;
+}
+
+.Rules h4 {
+    padding: 0;
+    margin: 0;
+}
+
+.Rules h4 {
+    background-color: rgb(116, 64, 64);
+    color: rgb(236, 227, 211);
+    padding-top: 5px;
+    ;
+    padding-bottom: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.Rules h3 {
+    font-size: 30px;
+}
+
+
+
+/* =======================================ABOUT PAGE===================================== */
+/*Styled and animated about page sections*/
+.about-intro,
+.about-creator,
+.about-vision {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    opacity: 0;
+    /*Start hidden*/
+}
+
+/*Adding animation to each section just keeping timing different so all don't animate together*/
+.about-intro {
+    animation: fade 1s forwards;
+}
+
+.about-creator {
+    animation: fade 1s forwards 0.75s;
+}
+
+.about-vision {
+    animation: fade 1s forwards 1.25s;
+}
+
+/*KeyFrames for that fade effect */
+@keyframes fade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

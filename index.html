@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/styles.css" rel="stylesheet">
+    <title>ILLUSION ROOM</title>
+</head>
+
+<body>
+    <!-- Skipping to main content -->
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+    <header>
+        <h1>THE SNAP ROOM</h1>
+        <nav id="main-navigation" aria-label="Main navigation">
+            <ul id="main-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="rules.html">Rules</a></li>
+                <li><button id="resetButton">Reset Frame</button></li>
+            </ul>
+        </nav>
+    </header>
+    <main id="mainContent">
+        <div class="hero-container">
+            <p id="welcomeMsg1">WELCOME TO THE SNAP ROOM</p>
+            <p id="welcomeMsg2">Explore. Interact. Freeze time with a single snap</p>
+            <p id="snapshotMessage" class="hidden" aria-live="polite">This is your snapshot! Click reset frame to try
+                again & start
+                animations.</p>
+            <p id="raceMessage" class="hidden" aria-live="polite">Race is ON!!! Click a Snap at when they reach camera
+            </p>
+            <p id="raceWinMessage" class="hidden" aria-live="assertive"></p>
+        </div>
+        <div class="raceButtonContainer">
+            <button id="startRace">Start Race</button>
+            <button id="resetRace">Reset Race</button>
+        </div>
+
+        <div class="main-design">
+            <!-- =======SCENE===== -->
+            <div class="scene">
+                <div id="photoPreview"></div>
+                <div class="room" id="roomContainer">
+
+                    <!-- =======ROOM===== -->
+                    <div class="wallBack"></div>
+                    <div class="wallLeft">
+
+                        <!-- =======PICTURE FRAME===== -->
+                        <div class="pictureFrame">
+                            <img src="image/_MG_2712.jpg" alt="moon view at night">
+                        </div>
+                    </div>
+                    <div class="wallRight">
+
+                        <!-- =======WINDOW===== -->
+                        <div class="windowRight" tabindex="0">
+                            <div class="windowFrame1"></div>
+                            <div class="windowFrame2"></div>
+                            <div class="windowFrame3"></div>
+                            <div class="windowFrame4"></div>
+                        </div>
+                    </div>
+                    <!-- =======FLOOR===== -->
+                    <div class="floor"></div>
+
+                    <!-- =======ROOF===== -->
+                    <div class="roof">
+                        <!-- =======LANTERNS===== -->
+                        <div class="lanternGrid">
+                            <div class="lantern"></div>
+                            <div class="lantern"></div>
+                            <div class="lantern"></div>
+                            <div class="lantern"></div>
+
+                            <div class="lantern"></div>
+                            <div class="lantern"></div>
+                            <div class="lantern"></div>
+                            <div class="lantern"></div>
+
+                            <div class="lantern"></div>
+                            <div class="lantern"></div>
+                            <div class="lantern"></div>
+                            <div class="lantern"></div>
+                        </div>
+                    </div>
+
+                    <!-- =======CLOCK===== -->
+                    <div class="clockMain">
+                        <div class="dial"></div>
+                        <div class="handHour"></div>
+                        <div class="handMinute"></div>
+                        <div class="handSecond"></div>
+                        <div class="dot"></div>
+                        <div class="pendulum"></div>
+                    </div>
+
+                    <!-- =======BOOKSHELF===== -->
+                    <div class="bookShelf">
+                        <div class="shelf1">
+                            <div class="book1" id="bookFall1" tabindex="0"></div>
+                            <!-- Created to have empty space for book fall animation -->
+                            <div id="textBookShelf">BOOKS</div>
+                            <div class="book2" id="bookFall2" tabindex="0"></div>
+                            <div class="book1"></div>
+                            <div class="bookTall"></div>
+                            <div class="book2"></div>
+                            <div class="book1"></div>
+                            <div class="bookTall"></div>
+                            <div class="book2"></div>
+                            <div class="bookTall"></div>
+                        </div>
+                        <div class="shelf2">
+                            <div class="bookTall"></div>
+                            <div class="book1"></div>
+                            <div class="book2"></div>
+                            <div class="bookTall"></div>
+                            <div class="book1"></div>
+                            <div class="book2"></div>
+                            <div class="bookTall"></div>
+                            <div class="book1"></div>
+                            <div class="book2"></div>
+                            <div class="book1"></div>
+                        </div>
+                        <div class="shelf3">
+                            <div class="book1"></div>
+                            <div class="book2"></div>
+                            <div class="bookTall"></div>
+                            <div class="book1"></div>
+                            <div class="book2"></div>
+                            <div class="bookTall"></div>
+                            <div class="book1"></div>
+                            <div class="book2"></div>
+                            <div class="bookTall"></div>
+                            <div class="book2"></div>
+                        </div>
+                    </div>
+
+                    <!-- =======CATS===== -->
+                    <div class="cat" tabindex="0"></div>
+                    <div class="catRunning" tabindex="0"></div>
+                    <div class="catRunJump" tabindex="0"></div>
+                    <audio id="catSound" src="audio/meow.mp3" preload="auto"></audio>
+                    <!--REFERENCE FOR CAT SOUND:[Sweet kitty meow] https://mixkit.co/free-sound-effects/cat/ -->
+                    <!-- =======LAMP===== -->
+                    <div class="table">
+                        <div id="tableLeg1"></div>
+                        <div id="tableLeg2"></div>
+                        <div class="lamp">
+                            <div class="lampShade" tabindex="0"></div>
+                        </div>
+                    </div>
+
+                    <!-- =======CAMERA ON TRIPOD===== -->
+                    <div class="cameraSetup" tabindex="0">
+                        <div class="cameraBody">
+                            <div class="lens"></div>
+                            <div class="viewfinder"></div>
+                        </div>
+                        <div class="tripod">
+                            <div class="leg1"></div>
+                            <div class="leg2"></div>
+                            <div class="leg3"></div>
+                        </div>
+                    </div>
+                    <div class="flash" id="flashEffect"></div>
+                    <audio id="cameraSound" src="audio/camera.mp3" preload="auto"></audio>
+                    <!--REFERENCE FOR CAMERA SOUND: https://pixabay.com/sound-effects/technology-camera-13695/ -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer id="footer">
+        <p>&copy; Lovepreet Sandhu, 2026</p>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
